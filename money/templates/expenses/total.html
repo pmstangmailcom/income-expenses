@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}All income/expenses{% endblock %}
+{% block body %}
+
+    <h2>All income/expenses</h2>
+
+<table>
+    <tr>
+        <th>Source</th>
+        <th>Category</th>
+        <th>Summa</th>
+        <th>Currency</th>
+        <th>Date_income/expenses</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for entry in entries %}
+    <tr>
+        <td>{{ entry.type_inc_exp }}</td>
+        <td>{{ entry.сategory }}</td>
+        <td>{{ entry.summa }}</td>
+        <td>{{ entry.currency }}</td>
+        <td>{{ entry.date_money }}</td>
+        <td><a href="/delete/{{ entry.id }}">Delete</a></td>
+        <td> | </td>
+        <td><a href="{% url 'expenses:update_entry' entry.id %}">Update</a></td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+{% endblock %}
